@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jonny Ahl - Problemlösare, Tech Enthusiast & Idéspruta">
+    <title>Jonny Ahl - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cursor trails -->
+    <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
+
+    <!-- Grain overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <picture class="hero-bg-image">
+            <source srcset="images/hero-cosmic.webp" type="image/webp">
+            <img src="images/hero-cosmic.png" alt="Cosmic background">
+        </picture>
+        
+        <div class="stars-layer"></div>
+        <canvas id="neural-canvas"></canvas>
+        
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="JONNY AHL">JONNY AHL</h1>
+            <p class="tagline">PROBLEMLÖSARE • IDÉSPRUTA • TECH ENTHUSIAST</p>
+        </div>
+        
+        <div class="scroll-prompt">
+            <span>⟱ UTFORSKA ⟱</span>
+        </div>
+    </section>
+
+    <!-- Section Divider Wave -->
+    <svg class="section-divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C300,60 600,60 900,20 C1050,0 1150,10 1200,20 L1200,120 L0,120 Z" fill="#0a0e27"></path>
+    </svg>
+
+    <!-- Profile Section -->
+    <section class="profile-section section-dark" id="profile">
+        <picture class="section-bg-overlay">
+            <source srcset="images/particles-overlay.webp" type="image/webp">
+            <img src="images/particles-overlay.png" alt="">
+        </picture>
+        
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-image-wrapper" data-scroll-reveal>
+                    <div class="profile-glow"></div>
+                    <img src="images/JonnyAhl.jpg" alt="Jonny Ahl" class="profile-image">
+                </div>
+                
+                <div class="profile-text" data-scroll-reveal>
+                    <h2 class="section-title">Hej!</h2>
+                    <p class="section-text">
+                        Jag är en <span class="highlight">mångsidig problemlösare</span> som älskar att dyka in i nya utmaningar. Med 20+ års erfarenhet inom försäljning, butik och FMCG, kombinerar jag affärssinne med teknisk nyfikenhet.
+                    </p>
+                    <p class="section-text">
+                        Just nu driver jag allt från <span class="highlight">spacemanagement och admin</span> till <span class="highlight">orderläggning och försäljning</span>. Min superkraft? Att snabbt <span class="highlight">se mönster, hitta lösningar</span> och koppla ihop saker på nya sätt.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curved Divider -->
+    <svg class="section-divider curved" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 Q300,0 600,60 T1200,60 L1200,120 L0,120 Z" fill="#0d1b2a"></path>
+    </svg>
+
+    <!-- Pattern Recognition Section -->
+    <section class="pattern-section" id="patterns">
+        <div class="pattern-bg-fixed">
+            <picture class="pattern-bg-image">
+                <source srcset="images/pattern-abstract.webp" type="image/webp">
+                <img src="images/pattern-abstract.png" alt="">
+            </picture>
+        </div>
+        
+        <div class="flying-object" id="flying-object-1">
+            <picture>
+                <source srcset="images/flying-object.webp" type="image/webp">
+                <img src="images/flying-object.png" alt="">
+            </picture>
+        </div>
+        
+        <div class="pattern-content">
+            <div class="container">
+                <div class="section-content" data-scroll-reveal>
+                    <h2 class="section-title">Mönsterigenkänning</h2>
+                    <p class="section-text">
+                        Jag ser inte bara detaljer – jag ser <span class="highlight">helheten</span>. Min förmåga att snabbt identifiera mönster och koppla samman information gör mig till en effektiv problemlösare.
+                    </p>
+                    <p class="section-text">
+                        Oavsett om det handlar om att optimera butikslayouter, strukturera digitala flöden eller hitta kreativa lösningar på komplexa utmaningar – jag ser kopplingar som andra kanske inte tänker på.
+                    </p>
+                    <div class="feature-tags">
+                        <span class="tag">Snabb</span>
+                        <span class="tag">Analytisk</span>
+                        <span class="tag">Strukturerad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <svg class="section-divider wave-reverse" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,80 Q200,20 400,60 T800,60 Q1000,80 1200,40 L1200,120 L0,120 Z" fill="#1a0033"></path>
+    </svg>
+
+    <!-- Code Section -->
+    <section class="code-section section-purple" id="code">
+        <picture class="section-bg-image">
+            <source srcset="images/code-hologram.webp" type="image/webp">
+            <img src="images/code-hologram.png" alt="">
+        </picture>
+        
+        <div class="code-particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="container">
+            <div class="code-content-wrapper">
+                <div class="section-content" data-scroll-reveal>
+                    <h2 class="section-title">Kod & Skapande</h2>
+                    <p class="section-text">
+                        Från <span class="highlight">HTML, CSS och JavaScript</span> till <span class="highlight">PHP och Python</span> – jag älskar att bygga saker. Webbdesign, automation, digitala lösningar – om det involverar kod och kreativitet är jag där.
+                    </p>
+                    <p class="section-text">
+                        Min <span class="highlight">drivkraft</span>? Att ta nya idéer och omvandla dem till verklighet. Jag lär mig snabbt, tillämpar omedelbart och chattar med AI hela dagarna för att pusha gränserna.
+                    </p>
+                </div>
+                
+                <div class="code-terminal" data-scroll-reveal>
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">jonny@portfolio:~</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command" id="typing-code"></span>
+                            <span class="cursor-blink">|</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagonal Divider -->
+    <svg class="section-divider diagonal" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 L1200,80 L1200,120 L0,120 Z" fill="#0a0e27"></path>
+    </svg>
+
+    <!-- Skills Section -->
+    <section class="skills-section section-dark" id="skills">
+        <div class="container">
+            <div class="section-content" data-scroll-reveal>
+                <h2 class="section-title centered">Kompetenser</h2>
+                <p class="section-text centered">
+                    En unik blandning av affärserfarenhet, teknisk kompetens och kreativt tänkande
+                </p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-scroll-reveal style="--delay: 0.1s">
+                    <div class="skill-icon">💼</div>
+                    <h3>Business & Retail</h3>
+                    <p>20+ års erfarenhet inom FMCG, merchandising, försäljning och butiksdrift. Från att driva egen verksamhet till att optimera e-handel.</p>
+                </div>
+                
+                <div class="skill-card" data-scroll-reveal style="--delay: 0.2s">
+                    <div class="skill-icon">⚡</div>
+                    <h3>Tech & Development</h3>
+                    <p>HTML, CSS, JavaScript, PHP, Python. Webbdesign, automation och digitala lösningar. Alltid på jakt efter nästa tech-utmaning.</p>
+                </div>
+                
+                <div class="skill-card" data-scroll-reveal style="--delay: 0.3s">
+                    <div class="skill-icon">🧩</div>
+                    <h3>Problemlösning</h3>
+                    <p>Ser lösningar snabbt, identifierar mönster och applicerar kunskap omedelbart. Analytisk, strukturerad och utvecklingsinriktad.</p>
+                </div>
+                
+                <div class="skill-card" data-scroll-reveal style="--delay: 0.4s">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI & Innovation</h3>
+                    <p>Passionerad om AI-verktyg och nya teknologier. Utforskar ständigt hur AI kan lösa verkliga problem och effektivisera processer.</p>
+                </div>
+                
+                <div class="skill-card" data-scroll-reveal style="--delay: 0.5s">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Allsidig & Ansvarstagande</h3>
+                    <p>Från admin och kassasystem till spacemanagement och orderläggning. Jag trivs när jag är lite överallt och kan bidra på flera fronter.</p>
+                </div>
+                
+                <div class="skill-card" data-scroll-reveal style="--delay: 0.6s">
+                    <div class="skill-icon">💡</div>
+                    <h3>Idéspruta</h3>
+                    <p>Älskar att starta nya projekt och utforska okända områden. Min styrka? Att se möjligheter och ta första steget mot innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-bg-glow"></div>
+        
+        <div class="container">
+            <div class="section-content centered" data-scroll-reveal>
+                <h2 class="section-title">Låt oss koppla upp</h2>
+                <p class="section-text">
+                    Har du en utmaning att lösa, ett projekt att starta eller bara vill prata tech och AI? Hör av dig!
+                </p>
+                
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/jonnyahl/" target="_blank" class="contact-link" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    
+                    <a href="/cdn-cgi/l/email-protection#bbd1d4d5d5c2dad3d7cffbdcd6dad2d795d8d4d6" class="contact-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Easter Egg Trigger -->
+        <div class="easter-egg-trigger" id="easter-egg-trigger" title="🎵 Något speciellt här...">
+            <span class="secret-icon">🐴</span>
+        </div>
+    </section>
+
+    <!-- Easter Egg: Högtafla Hage -->
+    <div class="easter-egg-modal" id="easter-egg-modal">
+        <div class="easter-egg-content">
+            <button class="close-easter-egg" id="close-easter-egg">&times;</button>
+            
+            <h2 class="easter-egg-title">🎵 Harmoni 🎵</h2>
+            <p class="easter-egg-subtitle">Skapa din egen melodi med olika toner och frekvenser</p>
+            
+            <div class="horses-container">
+                <div class="horse-channel" data-note="C3">
+                    <div class="horse-avatar">🎵</div>
+                    <div class="horse-info">
+                        <h3>Sub Bass</h3>
+                        <p>C3 - 130 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="subbass">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="C4">
+                    <div class="horse-avatar">🎸</div>
+                    <div class="horse-info">
+                        <h3>Bass</h3>
+                        <p>C4 - 262 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="bass">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="E4">
+                    <div class="horse-avatar">🎹</div>
+                    <div class="horse-info">
+                        <h3>Melodi</h3>
+                        <p>E4 - 330 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="melody">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="G4">
+                    <div class="horse-avatar">🎺</div>
+                    <div class="horse-info">
+                        <h3>Harmoni</h3>
+                        <p>G4 - 392 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="harmony">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="B4">
+                    <div class="horse-avatar">🎻</div>
+                    <div class="horse-info">
+                        <h3>Sopran</h3>
+                        <p>B4 - 494 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="soprano">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="D5">
+                    <div class="horse-avatar">🎼</div>
+                    <div class="horse-info">
+                        <h3>Diskant</h3>
+                        <p>D5 - 587 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="treble">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="F5">
+                    <div class="horse-avatar">✨</div>
+                    <div class="horse-info">
+                        <h3>Högt</h3>
+                        <p>F5 - 698 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="high">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+                
+                <div class="horse-channel" data-note="A5">
+                    <div class="horse-avatar">💫</div>
+                    <div class="horse-info">
+                        <h3>Kristall</h3>
+                        <p>A5 - 880 Hz</p>
+                    </div>
+                    <button class="horse-toggle" data-horse="crystal">
+                        <span class="toggle-state">OFF</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="easter-egg-controls">
+                <button class="control-btn" id="play-all">Spela Alla</button>
+                <button class="control-btn" id="stop-all">Stoppa Alla</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
