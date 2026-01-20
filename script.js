@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
     initEasterEgg();
     initFlyingObjects();
+    initScrollProgress();
+    initStatsCounter();
+    initBackToTop();
 });
 
 // ==================== CURSOR TRAIL ====================
@@ -25,12 +28,12 @@ function initCursorTrail() {
         trails.forEach((trail, index) => {
             trailX[index] += (mouseX - trailX[index]) * (0.1 / (index + 1));
             trailY[index] += (mouseY - trailY[index]) * (0.1 / (index + 1));
-            
+
             trail.style.left = trailX[index] + 'px';
             trail.style.top = trailY[index] + 'px';
             trail.style.opacity = 1 - (index * 0.3);
         });
-        
+
         requestAnimationFrame(animateTrails);
     }
 
@@ -41,20 +44,20 @@ function initCursorTrail() {
 function initNeuralNetwork() {
     const canvas = document.getElementById('neural-canvas');
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
     let nodes = [];
-    
+
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         createNodes();
     }
-    
+
     function createNodes() {
         nodes = [];
         const nodeCount = Math.floor((canvas.width * canvas.height) / 30000);
-        
+
         for (let i = 0; i < nodeCount; i++) {
             nodes.push({
                 x: Math.random() * canvas.width,
@@ -65,17 +68,17 @@ function initNeuralNetwork() {
             });
         }
     }
-    
+
     function drawNodes() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         // Draw connections
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
                 const dx = nodes[i].x - nodes[j].x;
                 const dy = nodes[i].y - nodes[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (distance < 150) {
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(0, 217, 255, ${0.15 * (1 - distance / 150)})`;
@@ -86,26 +89,26 @@ function initNeuralNetwork() {
                 }
             }
         }
-        
+
         // Draw nodes
         nodes.forEach(node => {
             ctx.beginPath();
             ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(0, 217, 255, 0.6)';
             ctx.fill();
-            
+
             // Update position
             node.x += node.vx;
             node.y += node.vy;
-            
+
             // Bounce off edges
             if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
             if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
         });
-        
+
         requestAnimationFrame(drawNodes);
     }
-    
+
     resize();
     window.addEventListener('resize', resize);
     drawNodes();
@@ -114,42 +117,42 @@ function initNeuralNetwork() {
 // ==================== PARALLAX SCROLLING ====================
 function initParallax() {
     let ticking = false;
-    
+
     function updateParallax() {
         const scrolled = window.pageYOffset;
         const hero = document.querySelector('.hero');
-        
+
         if (hero && scrolled < window.innerHeight) {
             const stars = document.querySelector('.stars-layer');
             const heroBg = document.querySelector('.hero-bg-image');
             const heroContent = document.querySelector('.hero-content');
             const scrollPrompt = document.querySelector('.scroll-prompt');
-            
+
             if (stars) {
                 stars.style.transform = `translateY(${scrolled * 0.3}px)`;
             }
-            
+
             if (heroBg) {
                 heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
-            
+
             if (heroContent) {
                 const fadeProgress = Math.min(scrolled / (window.innerHeight * 0.5), 1);
                 heroContent.style.opacity = 1 - fadeProgress;
                 heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
             }
-            
+
             if (scrollPrompt) {
                 scrollPrompt.style.opacity = 1 - (scrolled / (window.innerHeight * 0.3));
             }
         }
-        
+
         // Pattern section background fade
         const patternSection = document.querySelector('.pattern-section');
         if (patternSection) {
             const rect = patternSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            
+
             // Fade in when section enters viewport
             if (rect.top < windowHeight && rect.bottom > 0) {
                 patternSection.classList.add('active');
@@ -157,7 +160,7 @@ function initParallax() {
                 patternSection.classList.remove('active');
             }
         }
-        
+
         // Parallax for section backgrounds
         document.querySelectorAll('.section-bg-image').forEach(bg => {
             const section = bg.closest('section');
@@ -167,17 +170,17 @@ function initParallax() {
                 bg.style.transform = `translateY(${scrollProgress * 100}px)`;
             }
         });
-        
+
         ticking = false;
     }
-    
+
     function requestTick() {
         if (!ticking) {
             requestAnimationFrame(updateParallax);
             ticking = true;
         }
     }
-    
+
     window.addEventListener('scroll', requestTick, { passive: true });
     updateParallax();
 }
@@ -188,7 +191,7 @@ function initScrollReveal() {
         threshold: 0.15,
         rootMargin: '0px 0px -100px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -196,7 +199,7 @@ function initScrollReveal() {
             }
         });
     }, observerOptions);
-    
+
     document.querySelectorAll('[data-scroll-reveal]').forEach(el => {
         observer.observe(el);
     });
@@ -206,7 +209,7 @@ function initScrollReveal() {
 function initTypewriter() {
     const codeElement = document.getElementById('typing-code');
     if (!codeElement) return;
-    
+
     const codeSnippets = [
         'const solveProblem = (challenge) => { return solution; }',
         'npm install innovation creativity',
@@ -216,18 +219,18 @@ function initTypewriter() {
         'import { passion } from "creativity";',
         'async function dreamBig() { await achieve(); }'
     ];
-    
+
     let currentSnippet = 0;
     let currentChar = 0;
     let isDeleting = false;
-    
+
     function type() {
         const snippet = codeSnippets[currentSnippet];
-        
+
         if (!isDeleting) {
             codeElement.textContent = snippet.substring(0, currentChar);
             currentChar++;
-            
+
             if (currentChar > snippet.length) {
                 isDeleting = true;
                 setTimeout(type, 2000);
@@ -236,17 +239,17 @@ function initTypewriter() {
         } else {
             codeElement.textContent = snippet.substring(0, currentChar);
             currentChar--;
-            
+
             if (currentChar === 0) {
                 isDeleting = false;
                 currentSnippet = (currentSnippet + 1) % codeSnippets.length;
             }
         }
-        
+
         const speed = isDeleting ? 30 : 80;
         setTimeout(type, speed);
     }
-    
+
     // Start typing when code section is visible
     const codeSection = document.querySelector('.code-section');
     if (codeSection) {
@@ -258,7 +261,7 @@ function initTypewriter() {
                 }
             });
         }, { threshold: 0.3 });
-        
+
         observer.observe(codeSection);
     }
 }
@@ -279,12 +282,12 @@ function initEasterEgg() {
     const closeBtn = document.getElementById('close-easter-egg');
     const playAllBtn = document.getElementById('play-all');
     const stopAllBtn = document.getElementById('stop-all');
-    
+
     // Audio context for Web Audio API
     let audioContext = null;
     const oscillators = {};
     const activeHorses = new Set();
-    
+
     // Initialize Audio Context
     function initAudio() {
         if (!audioContext) {
@@ -292,7 +295,7 @@ function initEasterEgg() {
         }
         return audioContext;
     }
-    
+
     // Note frequencies
     const notes = {
         'C3': 130.81,
@@ -304,25 +307,25 @@ function initEasterEgg() {
         'F5': 698.46,
         'A5': 880.00
     };
-    
+
     // Create oscillator for a horse
     function createOscillator(note) {
         const ctx = initAudio();
         const oscillator = ctx.createOscillator();
         const gainNode = ctx.createGain();
-        
+
         oscillator.type = 'sine';
         oscillator.frequency.setValueAtTime(notes[note], ctx.currentTime);
-        
+
         gainNode.gain.setValueAtTime(0, ctx.currentTime);
         gainNode.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.1);
-        
+
         oscillator.connect(gainNode);
         gainNode.connect(ctx.destination);
-        
+
         return { oscillator, gainNode };
     }
-    
+
     // Toggle horse
     function toggleHorse(horseName, note, button) {
         if (activeHorses.has(horseName)) {
@@ -348,18 +351,18 @@ function initEasterEgg() {
             button.querySelector('.toggle-state').textContent = 'ON';
         }
     }
-    
+
     // Open modal
     trigger.addEventListener('click', () => {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
-    
+
     // Close modal
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
-        
+
         // Stop all sounds
         activeHorses.forEach(horseName => {
             if (oscillators[horseName]) {
@@ -370,25 +373,25 @@ function initEasterEgg() {
                 }, 100);
             }
         });
-        
+
         activeHorses.clear();
         Object.keys(oscillators).forEach(key => delete oscillators[key]);
-        
+
         // Reset buttons
         document.querySelectorAll('.horse-toggle').forEach(btn => {
             btn.classList.remove('active');
             btn.querySelector('.toggle-state').textContent = 'OFF';
         });
     }
-    
+
     closeBtn.addEventListener('click', closeModal);
-    
+
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
-    
+
     // Horse toggles
     document.querySelectorAll('.horse-toggle').forEach(button => {
         button.addEventListener('click', () => {
@@ -398,7 +401,7 @@ function initEasterEgg() {
             toggleHorse(horseName, note, button);
         });
     });
-    
+
     // Play all
     playAllBtn.addEventListener('click', () => {
         document.querySelectorAll('.horse-toggle').forEach(button => {
@@ -407,18 +410,18 @@ function initEasterEgg() {
             }
         });
     });
-    
+
     // Stop all
     stopAllBtn.addEventListener('click', () => {
         document.querySelectorAll('.horse-toggle.active').forEach(button => {
             button.click();
         });
     });
-    
+
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
         if (!modal.classList.contains('active')) return;
-        
+
         if (e.key === 'Escape') {
             closeModal();
         } else if (e.key === ' ') {
@@ -468,3 +471,151 @@ window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// ==================== SCROLL PROGRESS BAR ====================
+function initScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / (documentHeight - windowHeight)) * 100;
+
+        progressBar.style.width = Math.min(progress, 100) + '%';
+    }, { passive: true });
+}
+
+// ==================== ANIMATED STATS COUNTER ====================
+function initStatsCounter() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length === 0) return;
+
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+
+    const animateCounter = (element) => {
+        const target = parseInt(element.dataset.target);
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                element.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target;
+            }
+        };
+
+        updateCounter();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.target.textContent === '0') {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    statNumbers.forEach(stat => observer.observe(stat));
+}
+
+// ==================== BACK TO TOP BUTTON ====================
+function initBackToTop() {
+    const backToTopButton = document.getElementById('backToTop');
+    if (!backToTopButton) return;
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Keyboard accessibility
+    backToTopButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+// ==================== LAZY LOADING IMAGES ====================
+// Add lazy loading to images (modern browsers support this natively)
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    if ('loading' in HTMLImageElement.prototype) {
+        // Browser supports native lazy loading
+        return;
+    } else {
+        // Fallback for older browsers
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    observer.unobserve(img);
+                }
+            });
+        });
+        observer.observe(img);
+    }
+});
+
+// ==================== ENHANCED ACCESSIBILITY ====================
+// Add keyboard navigation hints
+document.addEventListener('keydown', (e) => {
+    // Show focus outline when using keyboard
+    if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-nav');
+    }
+});
+
+document.addEventListener('mousedown', () => {
+    document.body.classList.remove('keyboard-nav');
+});
+
+// ==================== PERFORMANCE MONITORING ====================
+// Log Core Web Vitals to console (for development)
+if ('PerformanceObserver' in window) {
+    try {
+        // Largest Contentful Paint
+        const lcpObserver = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            const lastEntry = entries[entries.length - 1];
+            console.log('LCP:', lastEntry.renderTime || lastEntry.loadTime);
+        });
+        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+        // First Input Delay
+        const fidObserver = new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+                console.log('FID:', entry.processingStart - entry.startTime);
+            });
+        });
+        fidObserver.observe({ entryTypes: ['first-input'] });
+    } catch (e) {
+        // Performance Observer not fully supported
+    }
+}

@@ -4,16 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jonny Ahl - Problemlösare, Tech Enthusiast & Idéspruta">
+    <meta name="description" content="Jonny Ahl - Mångsidig problemlösare med 20+ års erfarenhet inom FMCG och passion för tech, AI & webbdesign. Kontakta mig för spännande projekt!">
+    <meta name="theme-color" content="#0a0e27">
+    <link rel="canonical" href="https://jonnyahl.netlify.app">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jonnyahl.netlify.app">
+    <meta property="og:title" content="Jonny Ahl - Problemlösare & Tech Enthusiast">
+    <meta property="og:description" content="Mångsidig problemlösare med 20+ års erfarenhet inom FMCG och passion för tech & AI. Specialist på att se mönster, lösa problem och bygga digitala lösningar.">
+    <meta property="og:image" content="https://jonnyahl.netlify.app/images/JonnyAhl.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jonnyahl.netlify.app">
+    <meta name="twitter:title" content="Jonny Ahl - Problemlösare & Tech Enthusiast">
+    <meta name="twitter:description" content="Mångsidig problemlösare med 20+ års erfarenhet inom FMCG och passion för tech & AI.">
+    <meta name="twitter:image" content="https://jonnyahl.netlify.app/images/JonnyAhl.jpg">
+
     <title>Jonny Ahl - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Jonny Ahl",
+              "jobTitle": "Problemlösare & Tech Enthusiast",
+              "url": "https://jonnyahl.netlify.app",
+              "image": "https://jonnyahl.netlify.app/images/JonnyAhl.jpg",
+              "sameAs": [
+                "https://www.linkedin.com/in/jonnyahl/"
+              ],
+              "description": "Mångsidig problemlösare med 20+ års erfarenhet inom FMCG, butik och digital utveckling. Specialist på mönsterigenkänning, e-handel och tekniska lösningar.",
+              "knowsAbout": ["FMCG", "E-handel", "Webbdesign", "JavaScript", "Python", "Merchandising", "Problemlösning", "AI"],
+              "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Linnéuniversitetet, Malmö universitet, Uppsala universitet"
+              }
+            }
+            </script>
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#profile" class="skip-link">Hoppa till innehåll</a>
+
     <!-- Cursor trails -->
     <div class="cursor-trail"></div>
     <div class="cursor-trail"></div>
@@ -23,21 +67,21 @@
     <div class="grain-overlay"></div>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" aria-label="Hero introduktion">
         <picture class="hero-bg-image">
             <source srcset="images/hero-cosmic.webp" type="image/webp">
-            <img src="images/hero-cosmic.png" alt="Cosmic background">
+            <img src="images/hero-cosmic.png" alt="Kosmisk bakgrund med neural network">
         </picture>
 
-        <div class="stars-layer"></div>
-        <canvas id="neural-canvas"></canvas>
+        <div class="stars-layer" aria-hidden="true"></div>
+        <canvas id="neural-canvas" aria-hidden="true"></canvas>
 
         <div class="hero-content">
             <h1 class="glitch-text" data-text="JONNY AHL">JONNY AHL</h1>
             <p class="tagline">PROBLEMLÖSARE • IDÉSPRUTA • TECH ENTHUSIAST</p>
         </div>
 
-        <div class="scroll-prompt">
+        <div class="scroll-prompt" aria-label="Scrolla ner för mer innehåll">
             <span>⟱ UTFORSKA ⟱</span>
         </div>
     </section>
@@ -69,8 +113,48 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats-section section-dark" aria-labelledby="stats-heading">
+        <div class="container">
+            <h2 id="stats-heading" class="visually-hidden">Statistik och prestationer</h2>
+            <div class="stats-grid">
+                <div class="stat-card" data-scroll-reveal>
+                    <span class="stat-number" data-target="20">0</span>
+                    <span class="stat-plus">+</span>
+                    <span class="stat-label">Års Erfarenhet</span>
+                </div>
+                <div class="stat-card" data-scroll-reveal style="--delay: 0.1s">
+                    <span class="stat-number" data-target="100">0</span>
+                    <span class="stat-plus">%</span>
+                    <span class="stat-label">Drivs av Resultat</span>
+                </div>
+                <div class="stat-card" data-scroll-reveal style="--delay: 0.2s">
+                    <span class="stat-number" data-target="5">0</span>
+                    <span class="stat-plus">+</span>
+                    <span class="stat-label">Språk & Verktyg</span>
+                </div>
+                <div class="stat-card" data-scroll-reveal style="--delay: 0.3s">
+                    <span class="stat-number" data-target="100">0</span>
+                    <span class="stat-plus">%</span>
+                    <span class="stat-label">Passion för Tech</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pattern Recognition Section -->
     <section class="pattern-section" id="patterns">
+        <!-- Wave Divider at top -->
+        <svg class="section-divider-top wave-overlay" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="grad-pattern" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#0d1b2a;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1a4d5c;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path d="M0,80 Q300,20 600,60 T1200,80 L1200,0 L0,0 Z" fill="url(#grad-pattern)"></path>
+        </svg>
         <div class="pattern-bg-fixed">
             <picture class="pattern-bg-image">
                 <source srcset="images/pattern-abstract.webp" type="image/webp">
@@ -93,7 +177,7 @@
                         Jag ser inte bara detaljer – jag ser <span class="highlight">helheten</span>. Min förmåga att snabbt identifiera mönster och koppla samman information gör mig till en effektiv problemlösare.
                     </p>
                     <p class="section-text">
-                        Oavsett om det handlar om att optimera butikslayouter, strukturera digitala flöden eller hitta kreativa lösningar på komplexa utmaningar – jag ser kopplingar som andra kanske inte tänker på.
+                        Oavsett om det handlar om att optimera butikslayouter, strukturera digitala flöden eller hitta kreativa lösningar på komplexa utmaningar – jag ser kopplingar som andra missar.
                     </p>
                     <div class="feature-tags">
                         <span class="tag">Snabb</span>
@@ -118,10 +202,6 @@
             </defs>
             <path d="M0,100 Q200,30 400,70 T800,70 Q1000,90 1200,50 L1200,0 L0,0 Z" fill="url(#grad-code)"></path>
         </svg>
-        <!-- <picture class="section-bg-image">
-            <source srcset="images/code-hologram.webp" type="image/webp">
-            <img src="images/code-hologram.png" alt="">
-        </picture> -->
 
         <div class="code-particles-container">
             <div class="particle"></div>
@@ -247,6 +327,7 @@
                         </svg>
                         <span>Email</span>
                     </a>
+
                     <a href="images/Jonny_Ahl_CV_2026.pdf" download class="contact-link cv-link">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm2-4h8v2H8v-2zm0-3h8v2H8v-2zm0-3h5v2H8v-2z" />
@@ -367,6 +448,15 @@
             </div>
         </div>
     </div>
+
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Tillbaka till toppen">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M12 4l-8 8h5v8h6v-8h5z" />
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>
