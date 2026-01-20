@@ -46,6 +46,7 @@ section {
     align-items: center;
     padding: 0;
     margin: 0;
+    overflow: visible;
 }
 
 /* ==================== CURSOR ==================== */
@@ -111,7 +112,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         radial-gradient(2px 2px at 20% 30%, white, transparent),
         radial-gradient(2px 2px at 60% 70%, var(--electric-blue), transparent),
         radial-gradient(1px 1px at 50% 50%, var(--cyber-purple), transparent),
@@ -124,8 +125,15 @@ body {
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
 }
 
 #neural-canvas {
@@ -147,7 +155,9 @@ body {
 }
 
 @keyframes fadeInHero {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 .glitch-text {
@@ -166,9 +176,12 @@ body {
 }
 
 @keyframes glitchPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
     }
+
     50% {
         text-shadow: 0 0 60px rgba(157, 78, 221, 0.8);
     }
@@ -196,8 +209,15 @@ body {
 }
 
 @keyframes floatPrompt {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
 }
 
 /* ==================== SECTION DIVIDERS ==================== */
@@ -212,22 +232,35 @@ body {
     transform: translateY(1px);
 }
 
+.section-divider-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.section-divider-top.large {
+    height: 150px;
+    transform: translateY(-2px);
+}
+
+.section-divider-top.wave-overlay {
+    transform: translateY(-1px);
+}
+
+.section-divider-top.diagonal-overlay {
+    height: 120px;
+}
+
 .section-divider.curved path {
-    animation: waveCurve 8s ease-in-out infinite;
+    /* Animation removed for better mobile compatibility */
 }
 
 .section-divider.wave-reverse path {
-    animation: waveReverse 10s ease-in-out infinite;
-}
-
-@keyframes waveCurve {
-    0%, 100% { d: path("M0,60 Q300,0 600,60 T1200,60 L1200,120 L0,120 Z"); }
-    50% { d: path("M0,40 Q300,80 600,40 T1200,40 L1200,120 L0,120 Z"); }
-}
-
-@keyframes waveReverse {
-    0%, 100% { d: path("M0,80 Q200,20 400,60 T800,60 Q1000,80 1200,40 L1200,120 L0,120 Z"); }
-    50% { d: path("M0,60 Q200,40 400,80 T800,80 Q1000,60 1200,60 L1200,120 L0,120 Z"); }
+    /* Animation removed for better mobile compatibility */
 }
 
 /* ==================== SECTION BACKGROUNDS ==================== */
@@ -339,8 +372,15 @@ body {
 }
 
 @keyframes profilePulse {
-    0%, 100% { box-shadow: 0 0 60px rgba(0, 217, 255, 0.4); }
-    50% { box-shadow: 0 0 80px rgba(157, 78, 221, 0.6); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 80px rgba(157, 78, 221, 0.6);
+    }
 }
 
 .profile-glow {
@@ -356,8 +396,13 @@ body {
 }
 
 @keyframes rotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .profile-text {
@@ -369,7 +414,7 @@ body {
 /* ==================== PATTERN SECTION ==================== */
 .pattern-section {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     min-height: 100vh;
     background: transparent;
 }
@@ -411,6 +456,7 @@ body {
     display: flex;
     align-items: center;
     padding: 5rem 0;
+    overflow: hidden;
 }
 
 .flying-object {
@@ -434,12 +480,15 @@ body {
         transform: translate(-200px, 100vh) rotate(0deg);
         opacity: 0;
     }
+
     10% {
         opacity: 0.6;
     }
+
     90% {
         opacity: 0.6;
     }
+
     100% {
         transform: translate(100vw, -100px) rotate(360deg);
         opacity: 0;
@@ -532,9 +581,19 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    25% { transform: translateY(-30px) translateX(20px); }
-    75% { transform: translateY(-10px) translateX(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    25% {
+        transform: translateY(-30px) translateX(20px);
+    }
+
+    75% {
+        transform: translateY(-10px) translateX(-20px);
+    }
 }
 
 .code-content-wrapper {
@@ -569,9 +628,17 @@ body {
     border-radius: 50%;
 }
 
-.terminal-dot.red { background: #ff5f56; }
-.terminal-dot.yellow { background: #ffbd2e; }
-.terminal-dot.green { background: #27c93f; }
+.terminal-dot.red {
+    background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+    background: #ffbd2e;
+}
+
+.terminal-dot.green {
+    background: #27c93f;
+}
 
 .terminal-title {
     margin-left: auto;
@@ -607,8 +674,16 @@ body {
 }
 
 @keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
 }
 
 /* ==================== SKILLS SECTION ==================== */
@@ -712,6 +787,17 @@ body {
     box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
 }
 
+.contact-link.cv-link {
+    background: rgba(157, 78, 221, 0.2);
+    border-color: var(--cyber-purple);
+}
+
+.contact-link.cv-link:hover {
+    background: rgba(157, 78, 221, 0.3);
+    border-color: var(--cyber-purple);
+    box-shadow: 0 0 30px rgba(157, 78, 221, 0.4);
+}
+
 .contact-link svg {
     width: 24px;
     height: 24px;
@@ -743,8 +829,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(157, 78, 221, 0.4); }
-    50% { box-shadow: 0 0 40px rgba(157, 78, 221, 0.8); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(157, 78, 221, 0.8);
+    }
 }
 
 .secret-icon {
@@ -787,6 +880,7 @@ body {
         opacity: 0;
         transform: translateY(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -963,16 +1057,16 @@ body {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .profile-container {
         gap: 3rem;
     }
-    
+
     .profile-image-wrapper {
         width: 300px;
         height: 300px;
     }
-    
+
     .profile-glow {
         width: 350px;
         height: 350px;
@@ -983,126 +1077,134 @@ body {
     section {
         padding: 0;
     }
-    
+
     .profile-section,
     .code-section,
     .skills-section {
         padding: 4rem 0;
     }
-    
+
     .container {
         padding: 0 1.5rem;
     }
-    
+
     .glitch-text {
         font-size: clamp(2rem, 12vw, 4rem);
         letter-spacing: 0.05em;
     }
-    
+
     .tagline {
         font-size: clamp(0.7rem, 3vw, 1rem);
         letter-spacing: 0.2em;
     }
-    
+
     .section-title {
         font-size: clamp(1.8rem, 8vw, 3rem);
     }
-    
+
     .section-text {
         font-size: clamp(0.95rem, 2vw, 1.1rem);
     }
-    
+
     .profile-container {
         flex-direction: column;
         gap: 2rem;
     }
-    
+
     .profile-image-wrapper {
         width: 250px;
         height: 250px;
     }
-    
+
     .profile-glow {
         width: 300px;
         height: 300px;
     }
-    
+
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .contact-links {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
     }
-    
+
     .contact-link {
         width: 100%;
         max-width: 300px;
         justify-content: center;
     }
-    
+
     .feature-tags {
         justify-content: center;
     }
-    
+
     .code-terminal {
         font-size: 0.85rem;
     }
-    
+
     .terminal-body {
         padding: 1rem;
         min-height: 150px;
     }
-    
+
     .flying-object {
         width: 100px;
         height: 100px;
     }
-    
+
     .easter-egg-content {
         padding: 2rem 1.5rem;
         max-height: 85vh;
     }
-    
+
     .easter-egg-title {
         font-size: 1.5rem;
     }
-    
+
     .horses-container {
         max-height: 40vh;
     }
-    
+
     .horse-channel {
         gap: 0.8rem;
         padding: 0.8rem;
     }
-    
+
     .horse-avatar {
         font-size: 1.5rem;
         width: 40px;
     }
-    
+
     .horse-info h3 {
         font-size: 0.9rem;
     }
-    
+
     .horse-info p {
         font-size: 0.75rem;
     }
-    
+
     .easter-egg-controls {
         flex-direction: column;
     }
-    
+
     .control-btn {
         width: 100%;
     }
-    
+
     .section-divider {
         height: 60px;
+    }
+
+    .section-divider-top {
+        height: 80px;
+    }
+
+    .section-divider-top.large {
+        height: 100px;
     }
 }
 
@@ -1110,20 +1212,20 @@ body {
     .glitch-text {
         font-size: 2rem;
     }
-    
+
     .section-divider {
         height: 60px;
     }
-    
+
     .profile-image-wrapper {
         width: 200px;
         height: 200px;
     }
-    
+
     .skill-card {
         padding: 1.5rem;
     }
-    
+
     .contact-link {
         font-size: 0.9rem;
         padding: 1rem 2rem;
@@ -1132,6 +1234,7 @@ body {
 
 /* ==================== PERFORMANCE OPTIMIZATIONS ==================== */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
