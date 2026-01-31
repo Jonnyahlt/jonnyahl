@@ -1317,8 +1317,8 @@ body {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
+    gap: 3rem;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
     z-index: 10;
@@ -1326,7 +1326,7 @@ body {
 
 .stat-card {
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
     background: rgba(26, 77, 92, 0.15);
     border: 1px solid rgba(0, 217, 255, 0.2);
     border-radius: 12px;
@@ -1428,5 +1428,326 @@ body {
 @media (max-width: 480px) {
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ==================== EXPERIENCE SECTION ==================== */
+.experience-section {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.accordion-container {
+    max-width: 900px;
+    margin: 4rem auto 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* Timeline Line */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    width: 2px;
+    height: calc(100% - 300px);
+    background: linear-gradient(180deg,
+            transparent 0%,
+            var(--electric-blue) 10%,
+            var(--cyber-purple) 50%,
+            var(--electric-blue) 90%,
+            transparent 100%);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Accordion Item */
+.accordion-item {
+    background: rgba(26, 77, 92, 0.15);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item:hover {
+    background: rgba(26, 77, 92, 0.25);
+    border-color: var(--electric-blue);
+    transform: translateX(5px);
+}
+
+.accordion-item.featured {
+    border: 2px solid var(--electric-blue);
+    background: rgba(0, 217, 255, 0.08);
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.15);
+}
+
+.accordion-item.tech-highlight {
+    border-color: var(--cyber-purple);
+    background: rgba(157, 78, 221, 0.08);
+}
+
+.accordion-item.tech-highlight:hover {
+    border-color: var(--cyber-purple);
+    box-shadow: 0 0 30px rgba(157, 78, 221, 0.15);
+}
+
+/* Accordion Header (Button) */
+.accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: rgba(0, 217, 255, 0.05);
+}
+
+.accordion-header:focus {
+    outline: 2px solid var(--electric-blue);
+    outline-offset: -2px;
+}
+
+/* Job Header Layout */
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.job-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3));
+}
+
+.job-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.job-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 600;
+    color: var(--electric-blue);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.accordion-item.tech-highlight .job-title {
+    color: var(--cyber-purple);
+}
+
+.job-period {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+}
+
+.job-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--electric-blue);
+    color: var(--deep-space);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 20px;
+    margin-top: 0.3rem;
+    width: fit-content;
+}
+
+/* Toggle Icon */
+.toggle-icon {
+    font-size: 2rem;
+    color: var(--electric-blue);
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.accordion-item.tech-highlight .toggle-icon {
+    color: var(--cyber-purple);
+}
+
+.accordion-header[aria-expanded="true"] .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Accordion Content */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease;
+    opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    padding: 0 2rem 2rem 2rem;
+    opacity: 1;
+}
+
+/* Job Details List */
+.job-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.job-details li {
+    padding: 0.8rem 0 0.8rem 2.5rem;
+    position: relative;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInBullet 0.4s ease forwards;
+}
+
+.job-details li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.job-details li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.job-details li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.job-details li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideInBullet {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.job-details li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--electric-blue);
+    font-size: 1.2rem;
+}
+
+.accordion-item.tech-highlight .job-details li::before {
+    color: var(--cyber-purple);
+}
+
+.job-details li strong {
+    color: var(--electric-blue);
+    font-weight: 600;
+}
+
+.accordion-item.tech-highlight .job-details li strong {
+    color: var(--cyber-purple);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline-line {
+        display: none;
+    }
+
+    .accordion-header {
+        padding: 1.5rem;
+    }
+
+    .job-header {
+        gap: 1rem;
+    }
+
+    .job-icon {
+        font-size: 2rem;
+    }
+
+    .job-title {
+        font-size: 1rem;
+    }
+
+    .job-period {
+        font-size: 0.85rem;
+    }
+
+    .toggle-icon {
+        font-size: 1.5rem;
+    }
+
+    .accordion-item.active .accordion-content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+
+    .job-details li {
+        padding-left: 2rem;
+        font-size: 0.95rem;
+    }
+
+    .accordion-item:hover {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .job-icon {
+        font-size: 1.8rem;
+    }
+
+    .accordion-header {
+        padding: 1.2rem;
+    }
+
+    .job-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .accordion-content {
+        max-height: none !important;
+        opacity: 1 !important;
+        padding: 1rem 2rem 2rem 2rem !important;
+    }
+
+    .toggle-icon {
+        display: none;
+    }
+
+    .accordion-item {
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
     }
 }

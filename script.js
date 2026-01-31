@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     initStatsCounter();
     initBackToTop();
+    initExperienceAccordion();
 });
 
 // ==================== CURSOR TRAIL ====================
@@ -617,5 +618,52 @@ if ('PerformanceObserver' in window) {
         fidObserver.observe({ entryTypes: ['first-input'] });
     } catch (e) {
         // Performance Observer not fully supported
+    }
+}
+
+// ==================== EXPERIENCE ACCORDION ====================
+function initExperienceAccordion() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    if (accordionItems.length === 0) return;
+
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+
+        if (!header || !content) return;
+
+        // Click event
+        header.addEventListener('click', () => {
+            toggleAccordion(item, header, content);
+        });
+
+        // Keyboard navigation
+        header.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleAccordion(item, header, content);
+            }
+        });
+    });
+
+    function toggleAccordion(item, header, content) {
+        const isOpen = item.classList.contains('active');
+
+        // Optional: Close other accordions (comment out for multiple open)
+        // accordionItems.forEach(otherItem => {
+        //     if (otherItem !== item) {
+        //         otherItem.classList.remove('active');
+        //         otherItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        //     }
+        // });
+
+        // Toggle current accordion
+        if (isOpen) {
+            item.classList.remove('active');
+            header.setAttribute('aria-expanded', 'false');
+        } else {
+            item.classList.add('active');
+            header.setAttribute('aria-expanded', 'true');
+        }
     }
 }
